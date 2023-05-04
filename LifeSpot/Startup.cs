@@ -33,6 +33,12 @@ namespace LifeSpot
                     string html = await File.ReadAllTextAsync(viewPath);
                     await context.Response.WriteAsync(html);
                 });
+                endpoints.MapGet("/Static/CSS/index.css", async context =>
+                {
+                    string viewPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "CSS", "index.css");
+                    string html = await File.ReadAllTextAsync(viewPath);
+                    await context.Response.WriteAsync(html);
+                });
             });
         }
     }
