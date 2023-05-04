@@ -33,3 +33,6 @@ aside{
 body{
 	padding-left: 11%;
 }
+.navbar p:hover {
+	color: aliceblue;
+}
