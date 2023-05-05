@@ -41,3 +41,6 @@ body{
 #header-index{
    color: #44453f;
 }
+header,footer,body,.video-container{
+   background-color: pink;
+}
