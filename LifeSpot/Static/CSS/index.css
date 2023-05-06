@@ -13,10 +13,14 @@ header{
 	padding-top: 1.2%;
 }
 footer {
-	position: absolute;
+	position: relative;
 	bottom: 0;
 	font-size: medium;
 	color: dimgrey;
+	line-height: 66%;
+	padding-left: 1%;
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 aside{
 	height: 100%; /* Высота в полный размер. Этот параметр можно убрать, если вы хотите выставлять высоту автоматически */
@@ -39,8 +43,11 @@ body{
 /*Стиль хедера для главной страницы имеет приоритет,
 так как используется селектор по идентификатору*/
 #header-index{
-   color: #44453f;
+	color: #44453f;
 }
 header,footer,body,.video-container{
-   background-color: linen;
+	background-color: linen;
+}
+#video-search-input:focus {
+	border-color: red;
 }
