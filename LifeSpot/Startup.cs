@@ -1,4 +1,5 @@
 using System.IO;
+using System.Text;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -9,29 +10,42 @@ namespace LifeSpot
 {
 	public class Startup
 	{
-		// This method gets called by the runtime. Use this method to add services to the container.
-		// For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
 		public void ConfigureServices(IServiceCollection services)
 		{
 		}
 
-		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
 		{
 			if (env.IsDevelopment())
-			{
 				app.UseDeveloperExceptionPage();
-			}
 
 			app.UseRouting();
+
+			string footerHtml = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "footer.html"));
+			string sideBarHtml = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "sideBar.html"));
 
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapGet("/", async context =>
 				{
 					string viewPath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "index.html");
-					string html = await File.ReadAllTextAsync(viewPath);
-					await context.Response.WriteAsync(html);
+
+					StringBuilder html = new StringBuilder(await File.ReadAllTextAsync(viewPath))
+						.Replace("<!--SIDEBAR-->", sideBarHtml)
+						.Replace("<!--FOOTER-->", footerHtml);
+
+					await context.Response.WriteAsync(html.ToString());
+				});
+
+				endpoints.MapGet("/testing", async context =>
+				{
+					string viewPath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "testing.html");
+
+					StringBuilder html = new StringBuilder(await File.ReadAllTextAsync(viewPath))
+						.Replace("<!--SIDEBAR-->", sideBarHtml)
+						.Replace("<!--FOOTER-->", footerHtml);
+
+					await context.Response.WriteAsync(html.ToString());
 				});
 
 				endpoints.MapGet("/Static/CSS/index.css", async context =>
@@ -47,7 +61,6 @@ namespace LifeSpot
 					string js = await File.ReadAllTextAsync(jsPath);
 					await context.Response.WriteAsync(js);
 				});
-
 			});
 		}
 	}
