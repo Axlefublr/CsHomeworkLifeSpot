@@ -13,14 +13,14 @@ function filterLivestreams(input) {
 }
 
 function handleSession() {
-	let userData = new Map();
-	userData.set("agent", window.navigator.userAgent);
+	let session = new Map();
+	session.set("agent", window.navigator.userAgent);
 
 	let age = prompt("Пожалуйста, введите ваш возраст");
-	userData.set("age", age);
+	session.set("age", age);
 	if (age >= 18) {
 		let dateNow = new Date().toLocaleString();
-		userData.set("startDate", dateNow);
+		session.set("startDate", dateNow);
 		alert("Приветствуем на LifeSpot! " + dateNow);
 	} else {
 		alert(
@@ -28,8 +28,8 @@ function handleSession() {
 		);
 		window.location.href = "http://www.google.com";
 	}
-	for (let result of userData) {
+	for (let result of session) {
 		console.log(result);
 	}
-	return userData;
+	return session;
 }
