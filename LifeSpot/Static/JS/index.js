@@ -1,4 +1,8 @@
-function filterLivestreams(inputParseFunction) {
+function inputParseFunction() {
+	return document.getElementsByTagName("input")[0].value.toLowerCase();
+}
+
+function filterLivestreams() {
 	let elements = document.getElementsByClassName("video-container");
 	for (let i = 0; i < elements.length; i++) {
 		let element = elements[i].getElementsByTagName("h3")[0];
