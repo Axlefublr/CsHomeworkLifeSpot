@@ -15,10 +15,14 @@ function filterLivestreams() {
 	}
 }
 
-function handleSession() {
-	let session = new Map();
-	session.set("agent", window.navigator.userAgent);
+const session = new Map();
 
+function handleSession() {
+	session.set("agent", window.navigator.userAgent);
+	session.set("startDate", new Date().toLocaleString());
+}
+
+function checkAge() {
 	let age = prompt("Пожалуйста, введите ваш возраст");
 	session.set("age", age);
 	if (age >= 18) {
@@ -31,10 +35,9 @@ function handleSession() {
 		);
 		window.location.href = "http://www.google.com";
 	}
-	return session;
 }
 
-function printSession(session) {
+function sessionLog() {
 	for (let result of session) {
 		console.log(result);
 	}
