@@ -13,7 +13,12 @@
 
 		<input
 			type="text"
-			oninput="filterLivestreams(document.getElementsByTagName('input')[0].value.toLowerCase());"
+			oninput="
+				const inputParseFunction = function() {
+					return document.getElementsByTagName('input')[0].value.toLowerCase()
+				}
+				filterLivestreams(inputParseFunction)
+			;"
 			size="50%"
 		/>
 	</header>

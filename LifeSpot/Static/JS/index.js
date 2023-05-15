@@ -1,10 +1,9 @@
-function filterLivestreams(input) {
-	input = input.toLowerCase();
+function filterLivestreams(inputParseFunction) {
 	let elements = document.getElementsByClassName("video-container");
 	for (let i = 0; i < elements.length; i++) {
 		let element = elements[i].getElementsByTagName("h3")[0];
 		let videoDescription = element.innerText.toLowerCase();
-		if (!videoDescription.includes(input)) {
+		if (!videoDescription.includes(inputParseFunction())) {
 			elements[i].style.display = "none";
 		} else {
 			elements[i].style.display = "inline-block";
@@ -28,8 +27,11 @@ function handleSession() {
 		);
 		window.location.href = "http://www.google.com";
 	}
+	return session;
+}
+
+function printSession(session) {
 	for (let result of session) {
 		console.log(result);
 	}
-	return session;
 }
