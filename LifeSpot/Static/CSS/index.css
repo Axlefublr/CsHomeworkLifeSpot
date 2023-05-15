@@ -1,71 +1,87 @@
-﻿header,footer,aside,body,.navbar,.video-container{
-    font-family: "Helvetica 65 Medium", sans-serif;
+﻿header,
+footer,
+aside,
+body,
+.navbar,
+.video-container {
+	font-family: "Helvetica 65 Medium", sans-serif;
 }
 
-header,footer,body,.video-container{
-    background-color: linen;
+header,
+footer,
+body,
+.video-container {
+	background-color: linen;
 }
 
-.video-container{
-    display: inline-block;
-    margin-top: 0.5em;
-    padding-left: 1%;
-    padding-top: 1%;
+.video-container {
+	display: inline-block;
+	margin-top: 0.5em;
+	padding-left: 1%;
+	padding-top: 1%;
 }
 
-.navbar p{
-    color: darkgray;
-    padding-left: 15%;
+.navbar p {
+	color: darkgray;
+	padding-left: 15%;
 }
 
-.navbar p:hover{
-    color: aliceblue;
+.navbar p:hover {
+	color: aliceblue;
 }
 
-header{
-    color: black;
-    padding-left: 1%;
-    padding-top: 1.2%;
+header {
+	color: black;
+	padding-left: 1%;
+	padding-top: 1.2%;
 }
-#header-index{
-    color: #44453f;
+#header-index {
+	color: #44453f;
 }
 
 footer {
-    position: absolute;
-    bottom: 0;
-    font-size: medium;
-    color: dimgrey;
-    line-height: 66%;
-    padding-left: 1%;
+	position: absolute;
+	bottom: 0;
+	font-size: medium;
+	color: dimgrey;
+	line-height: 66%;
+	padding-left: 1%;
 }
 
-aside{
-    height: 100%;
-    width: 10%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    padding-top: 2%;
-    font-size: large;
+aside {
+	height: 100%;
+	width: 10%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #111;
+	overflow-x: hidden;
+	padding-top: 2%;
+	font-size: large;
 }
 
-body{
-    padding-left: 11%;
+body {
+	padding-left: 11%;
 }
 
-a{
-    text-decoration: none;
+a {
+	text-decoration: none;
 }
 
 input {
-    border: 2px solid darkgrey;
-    border-radius: 2px;
-    outline: none;
+	border: 2px solid darkgrey;
+	border-radius: 2px;
+	outline: none;
 }
 
 input:focus {
-    border: 2px solid dimgrey;
+	border: 2px solid dimgrey;
+}
+
+.review-container,
+.review-button {
+	display: inline-block;
+	margin-top: 0.5em;
+	padding-left: 1%;
+	padding-top: 1%;
 }
