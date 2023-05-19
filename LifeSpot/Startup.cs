@@ -21,71 +21,75 @@ namespace LifeSpot
 
 			app.UseRouting();
 
+			// Загружаем отдельные элементы для вставки в шаблон: боковое миню и футер
 			string footerHtml = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "footer.html"));
 			string sideBarHtml = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "sideBar.html"));
 
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapGet("/", async context =>
-				{
-					string viewPath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "index.html");
+					{
+					 var viewPath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "index.html");
 
-					StringBuilder html = new StringBuilder(await File.ReadAllTextAsync(viewPath))
-						.Replace("<!--SIDEBAR-->", sideBarHtml)
-						.Replace("<!--FOOTER-->", footerHtml);
+						// Загружаем шаблон страницы, вставляя в него элементы
+					 var html = new StringBuilder(await File.ReadAllTextAsync(viewPath))
+							  .Replace("<!--SIDEBAR-->", sideBarHtml)
+							  .Replace("<!--FOOTER-->", footerHtml);
 
-					await context.Response.WriteAsync(html.ToString());
-				});
+					 await context.Response.WriteAsync(html.ToString());
+				 });
 
 				endpoints.MapGet("/testing", async context =>
-				{
-					string viewPath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "testing.html");
+					{
+					 var viewPath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "testing.html");
 
-					StringBuilder html = new StringBuilder(await File.ReadAllTextAsync(viewPath))
-						.Replace("<!--SIDEBAR-->", sideBarHtml)
-						.Replace("<!--FOOTER-->", footerHtml);
+						// Загружаем шаблон страницы, вставляя в него элементы
+					 var html = new StringBuilder(await File.ReadAllTextAsync(viewPath))
+							  .Replace("<!--SIDEBAR-->", sideBarHtml)
+							  .Replace("<!--FOOTER-->", footerHtml);
 
-					await context.Response.WriteAsync(html.ToString());
-				});
+					 await context.Response.WriteAsync(html.ToString());
+				 });
 
 				endpoints.MapGet("/about", async context =>
-				{
-					string viewPath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "about.html");
+					{
+					 var viewPath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "about.html");
 
-					StringBuilder html = new StringBuilder(await File.ReadAllTextAsync(viewPath))
-						.Replace("<!--SIDEBAR-->", sideBarHtml)
-						.Replace("<!--FOOTER-->", footerHtml);
+						// Загружаем шаблон страницы, вставляя в него элементы
+					 var html = new StringBuilder(await File.ReadAllTextAsync(viewPath))
+							  .Replace("<!--SIDEBAR-->", sideBarHtml)
+							  .Replace("<!--FOOTER-->", footerHtml);
 
-					await context.Response.WriteAsync(html.ToString());
-				});
+					 await context.Response.WriteAsync(html.ToString());
+				 });
 
 				endpoints.MapGet("/Static/CSS/index.css", async context =>
-				{
-					string cssPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "CSS", "index.css");
-					string css = await File.ReadAllTextAsync(cssPath);
-					await context.Response.WriteAsync(css);
-				});
+					{
+					 var cssPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "CSS", "index.css");
+					 var css = await File.ReadAllTextAsync(cssPath);
+					 await context.Response.WriteAsync(css);
+				 });
 
 				endpoints.MapGet("/Static/JS/index.js", async context =>
-				{
-					string jsPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "JS", "index.js");
-					string js = await File.ReadAllTextAsync(jsPath);
-					await context.Response.WriteAsync(js);
-				});
+					{
+					 var jsPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "JS", "index.js");
+					 var js = await File.ReadAllTextAsync(jsPath);
+					 await context.Response.WriteAsync(js);
+				 });
 
 				endpoints.MapGet("/Static/JS/testing.js", async context =>
-				{
-					string jsPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "JS", "testing.js");
-					string js = await File.ReadAllTextAsync(jsPath);
-					await context.Response.WriteAsync(js);
-				});
+					{
+					 var jsPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "JS", "testing.js");
+					 var js = await File.ReadAllTextAsync(jsPath);
+					 await context.Response.WriteAsync(js);
+				 });
 
 				endpoints.MapGet("/Static/JS/about.js", async context =>
-				{
-					string jsPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "JS", "about.js");
-					string js = await File.ReadAllTextAsync(jsPath);
-					await context.Response.WriteAsync(js);
-				});
+					{
+					 var jsPath = Path.Combine(Directory.GetCurrentDirectory(), "Static", "JS", "about.js");
+					 var js = await File.ReadAllTextAsync(jsPath);
+					 await context.Response.WriteAsync(js);
+				 });
 			});
 		}
 	}
