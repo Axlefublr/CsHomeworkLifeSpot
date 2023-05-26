@@ -50,3 +50,12 @@ const writeReview = (review) => {
 		`<p>${review["text"]}</p>` +
 		"</div>";
 };
+
+function addLike(id) {
+	const element = document.getElementById(id);
+	let array = element.innerText.split(" ");
+	let resultNum = parseInt(array[array.length - 1], 10);
+	resultNum++;
+	array[array.length - 1] = resultNum;
+	element.innerText = array.join(" ");
+}
