@@ -51,8 +51,7 @@ namespace LifeSpot
 
 				StringBuilder html = new StringBuilder(await File.ReadAllTextAsync(viewPath))
 					.Replace("<!--SIDEBAR-->", sideBarHtml)
-					.Replace("<!--FOOTER-->", footerHtml)
-					.Replace("<!--SLIDER-->", sliderHtml);
+					.Replace("<!--FOOTER-->", footerHtml);
 
 				await context.Response.WriteAsync(html.ToString());
 			});
@@ -74,10 +73,27 @@ namespace LifeSpot
 
 				StringBuilder html = new StringBuilder(await File.ReadAllTextAsync(viewPath))
 					.Replace("<!--SIDEBAR-->", sideBarHtml)
-					.Replace("<!--FOOTER-->", footerHtml);
+					.Replace("<!--FOOTER-->", footerHtml)
+					.Replace("<!--SLIDER-->", sliderHtml);
 
 				await context.Response.WriteAsync(html.ToString());
 			});
+		}
+
+		public static void MapImg(this IEndpointRouteBuilder builder)
+		{
+			string[] imgFiles = { "london.jpg", "ny.jpg", "spb.jpg" };
+
+			foreach (string fileName in imgFiles)
+			{
+				builder.MapGet($"img/{fileName}", async context =>
+				{
+					string imgPath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "img", fileName);
+
+					context.Response.ContentType = "image/jpeg";
+					await context.Response.SendFileAsync(imgPath);
+				});
+			}
 		}
 	}
 }
