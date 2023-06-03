@@ -108,3 +108,20 @@ input {
 input:focus {
 	border: 2px solid dimgrey;
 }
+
+.slider {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: max-content;
+}
+
+.slider-btn {
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.slide {
+    display: none;
+    max-width: 100%;
+}

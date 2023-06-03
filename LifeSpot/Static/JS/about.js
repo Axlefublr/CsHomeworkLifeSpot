@@ -59,3 +59,19 @@ function addLike(id) {
 	array[array.length - 1] = resultNum;
 	element.innerText = array.join(" ");
 }
+
+const slides = document.querySelectorAll(".slide");
+let currentSlide = 0;
+
+function showSlide() {
+	slides.forEach((slide) => (slide.style.display = "none"));
+	slides[currentSlide].style.display = "block";
+}
+
+function moveSlide(direction) {
+	currentSlide += direction;
+	if (currentSlide < 0) currentSlide = slides.length - 1;
+	if (currentSlide >= slides.length) currentSlide = 0;
+	showSlide();
+}
+showSlide();
