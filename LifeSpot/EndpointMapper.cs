@@ -86,7 +86,7 @@ namespace LifeSpot
 
 			foreach (string fileName in imgFiles)
 			{
-				builder.MapGet($"img/{fileName}", async context =>
+				builder.MapGet($"/Views/Shared/img/{fileName}", async context =>
 				{
 					string imgPath = Path.Combine(Directory.GetCurrentDirectory(), "Views", "Shared", "img", fileName);
 
